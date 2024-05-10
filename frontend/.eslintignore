@@ -1,0 +1,12 @@
+node_modules/
+.next/
+build/
+public/
+package-lock.json
+next.config.js
+vite.config.ts
+next.config.js
+tsconfig.json
+src/env.d.ts
+*.cjs
+*.mjs
