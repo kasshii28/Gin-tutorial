@@ -1,9 +1,10 @@
 package main
+
 import (
-	"github.com/Gin-tutorial/backend/app/models/routes"
+	"backend/app/models/controller"
 )
 
 func main() {
-	routes.CorsSettings()
-	routes.StartMainServer()
+	controller.CorsSettings()
+	controller.StartMainServer()
 }
