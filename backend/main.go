@@ -1,10 +1,16 @@
 package main
 
 import (
-	"backend/app/models/controller"
+	"backend/tests"
+	//"backend/app/models/controller"
 )
 
 func main() {
-	controller.CorsSettings()
-	controller.StartMainServer()
+	// controller.CorsSettings()
+	//controller.StartMainServer()
+
+	tests.CreateUserTest()
+	tests.GetUserTest()
+	tests.UpdateUserTest()
+	tests.DeleteUserTest()
 }

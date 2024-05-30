@@ -1,0 +1,3 @@
+2024/05/18 00:54:46 users.go:43: failed to create user near "?": syntax error
+2024/05/18 00:56:31 users.go:43: failed to create user near ")": syntax error
+2024/05/30 15:51:46 users.go:69: failed to Update User no such table: uses

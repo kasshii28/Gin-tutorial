@@ -1,13 +1,13 @@
 package models
 
 import (
-	//"crypto/sha1"
+	"crypto/sha1"
 	"backend/config"
 	"database/sql"
 	"fmt"
 	"log"
 
-	//"github.com/google/uuid"
+	"github.com/google/uuid"
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -48,7 +48,7 @@ func init() {
 		user_id INTEGER,
 		created_at DATETIME,
 		updated_at DATETIME,
-		deadline DATETIME)`, tableNameTodo)
+		reserved_at DATETIME)`, tableNameTodo)
 
 	_, err = Db.Exec(cmdT)
 	if err != nil {
