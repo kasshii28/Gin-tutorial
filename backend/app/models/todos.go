@@ -25,14 +25,14 @@ func (u *User) CreateTodo(content string, content_tag string, done bool, reserve
 		user_id,
 		created_at,
 		updated_at,
-		reserved_at) values (? ? ? ? ? ? ?)`
+		reserved_at) values (?, ?, ?, ?, ?, ?, ?)`
 	
 	_, err = Db.Exec(
 		cmd, 
 		content,
-		u.ID, // userインスタンスのI
 		content_tag,
 		done, 
+		u.ID, // userインスタンスのI
 		time.Now(),
 		time.Now(),
 		reserved_at,
@@ -45,7 +45,7 @@ func (u *User) CreateTodo(content string, content_tag string, done bool, reserve
 	return err
 }
 
-// Todoの作成
+// Todoの取得
 func GetTodo(id int) (todo Todo, err error) {
 	cmd := `
 	select id, 

@@ -1,3 +1,5 @@
 2024/05/18 00:54:46 users.go:43: failed to create user near "?": syntax error
 2024/05/18 00:56:31 users.go:43: failed to create user near ")": syntax error
 2024/05/30 15:51:46 users.go:69: failed to Update User no such table: uses
+2024/05/30 17:01:45 todos.go:42: failed to create Todo sql: converting argument $3 type: unsupported type []string, a slice of string
+2024/05/30 17:04:30 todos.go:42: failed to create Todo near "?": syntax error

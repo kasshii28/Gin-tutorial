@@ -9,8 +9,5 @@ func main() {
 	// controller.CorsSettings()
 	//controller.StartMainServer()
 
-	tests.CreateUserTest()
-	tests.GetUserTest()
-	tests.UpdateUserTest()
-	tests.DeleteUserTest()
+	tests.DeleteTodoTest()
 }
