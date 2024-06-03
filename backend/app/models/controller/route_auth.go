@@ -1,35 +1,36 @@
 package controller
 
-// import (
-// 	"log"
-// 	"net/http"
-// 	"backend/app/models"
-// 	"backend/utils"
-// 	"github.com/gin-gonic/gin"
-// )
+import (
+	"log"
+	"net/http"
+	"backend/app/models"
+	"github.com/gin-gonic/gin"
+)
 
-// func signup(c *gin.Context){
-// 	if c.Request.Method == "GET" {
-// 		_, err := utils.GenerateTokenJWT()
-// 		if err != nil {
-// 			c.Redirect(http.StatusFound, "/login")
-// 		} else {
-// 			c.Redirect(http.StatusFound, "/todos")
-// 		}
-// 	} else if c.Request.Method == "POST" {
-// 		err := c.ParseForm()
-// 		if err != nil {
-// 			log.Fatalln(err)
-// 		}
-// 		user := models.User{
-// 			Name: c.Request.Form["name"],
-// 			Email: c.Request.Form["email"],
-// 			PassWord: c.Request.Form["password"],
-// 		}
-// 		if er := user.CreateUser(); err != nil {
-// 			log.Fatalln("failed to create user",err)
-// 		}
+func signup(c *gin.Context){
+	if c.Request.Method == http.MethodGet {
+		_, err := session(c)
+		if err != nil {
+			c.JSON(http.StatusOK, gin.H{"redirect": "/signup"})
+		} else {
+			c.JSON(http.StatusFound, gin.H{"redirect": "/todos"})
+		}
+	} else if c.Request.Method == http.MethodPost {
+		err := c.Request.ParseForm()
+		if err != nil {
+			log.Fatalln("failed to parse",err)
+		}
+		user := models.User{
+			Name: c.PostForm("name"),
+			Email: c.PostForm("email"),
+			PassWord: c.PostForm("password"),
+		}
+		if err := user.CreateUser(); err != nil {
+			log.Fatalln("failed to create user",err)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to create user"})
+			return 
+		}
 
-// 		c.Redirect(http.StatusFound, "/")
-// 	}
-// }
+		c.JSON(http.StatusFound, gin.H{"redirect": "/"})
+	}
+}

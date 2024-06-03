@@ -18,6 +18,7 @@ var err error
 const (
 	tableNameUser = "users"
 	tableNameTodo = "todos"
+	tableNameSession = "sessions"
 )
 
 func init() {
@@ -37,7 +38,7 @@ func init() {
 
 	_, err = Db.Exec(cmdU)
 	if err != nil {
-		log.Fatalln("failed to execute user_table",err)
+		log.Fatalln("failed to execute user_table", err)
 	}
 
 	cmdT := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
@@ -52,7 +53,19 @@ func init() {
 
 	_, err = Db.Exec(cmdT)
 	if err != nil {
-		log.Fatalln("failed to execute todo_table",err)
+		log.Fatalln("failed to execute todo_table", err)
+	}
+
+	cmdS := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		uuid STRING NOT NULL UNIQUE,
+		email STRING,
+		user_id INTEGER,
+		created_at DATETIME)`, tableNameSession)
+
+	_, err = Db.Exec(cmdS)
+	if err != nil {
+		log.Fatalln("failed to execute session_table", err)
 	}
 }
 
