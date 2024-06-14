@@ -12,10 +12,6 @@ func top(c *gin.Context) {
 			"message": "Welcome Todo List!",
 		})
 	} else {
-		c.JSON(http.StatusFound, gin.H{"redirect": "/todos"})
+		c.JSON(http.StatusFound, gin.H{"redirect-url": "/todos"})
 	}
-}
-
-func todos(c *gin.Context) {
-	
 }

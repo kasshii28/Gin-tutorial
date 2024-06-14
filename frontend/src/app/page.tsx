@@ -1,5 +1,6 @@
-import { type Data } from "./types/data"
-
+interface Data {
+  message: string;
+}
 export default async function Home() {
   const res = await fetch("http://localhost:8000/", {
     cache: "no-store",

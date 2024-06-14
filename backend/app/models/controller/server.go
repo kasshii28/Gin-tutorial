@@ -43,9 +43,7 @@ func parseURL(fn func(*gin.Context, int)) gin.HandlerFunc{
     }
 }
 
-func CorsSettings() {
-	r := gin.Default()
-
+func CorsSettings(r *gin.Engine) {
     // Corsの設定
     r.Use(cors.New(cors.Config{
         // アクセス許可するオリジン
@@ -64,6 +62,7 @@ func CorsSettings() {
         AllowHeaders: []string{
             "Access-Control-Allow-Credentials",
 			"Access-Control-Allow-Headers",
+            "Access-Control-Allow-Origin",
 			"Content-Type",
 			"Content-Length",
 			"Accept-Encoding",
@@ -76,10 +75,9 @@ func CorsSettings() {
     }))
 }
 
-func StartMainServer() {
-	r := gin.Default()
-
-	r.GET("/", top)
+func StartMainServer(r *gin.Engine) {
+    r.GET("/", top)
+    r.POST("/signup", signup)
 
 	r.Run(":8000")
 }
