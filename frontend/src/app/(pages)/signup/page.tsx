@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import type { SubmitHandler } from "react-hook-form"
 import type { FormValues } from "@/app/features/types/data"
 import { useForm } from "react-hook-form"
@@ -8,6 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { PostForm } from "@/app/features/functions"
 import { useRouter } from "next/navigation"
 import { z } from "zod"
+import { Button } from "@/app/features/components/elements"
+import { UrlArray } from "@/app/features/constants/Url"
+import { UrlMsgArray } from "@/app/features/constants/Urlmsg"
 
 const signUpSchema = z
     .object({
@@ -37,7 +39,7 @@ export default function SignUpPage() {
         try{
             const res = await PostForm(data, "signup")
             console.log(res)
-            router.push("/todos")
+            router.push("/")
         }catch (err) {
             console.log(err)
         }
@@ -72,11 +74,7 @@ export default function SignUpPage() {
                     <span className="text-sm text-gray-600">
                         既にアカウントをお持ちですか？
                     </span>
-                    <button className="ml-1 text-sm font-bold text-blue-500 hover:text-blue-700">
-                        <Link href="/signin">
-                            ログインページへ
-                        </Link>
-                    </button>
+                    <Button url={UrlArray[1]} msg={UrlMsgArray[1]}/>
                 </div>
             </form>
         </div>
