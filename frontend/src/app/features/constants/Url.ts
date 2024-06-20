@@ -1,7 +1,8 @@
 export const UrlArray = [
-    "signup",
-    "signin",
-    "signout",
+    "public/signup",
+    "public/signin",
+    "../public/signup",
+    "../public/signin",
     "todos",
     "create-todo",
     "update-todo",

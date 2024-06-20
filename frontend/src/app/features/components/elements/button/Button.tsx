@@ -1,11 +1,11 @@
-import Link from "next/link"
+import type { ButtonProps } from "@/app/features/types/data";
 
-export default function Button({url, msg}: {url: string, msg: string}) {
+export default function Button({ ...props }: ButtonProps) {
   return (
-    <button className="ml-1 text-sm font-bold text-blue-500 hover:text-blue-700">
-        <Link href={url}>
-            {msg}
-        </Link>
+    <button 
+      type={props.type}
+      className="rounded bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-700">
+        {props.children}
     </button>
   )
 }

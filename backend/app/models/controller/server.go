@@ -78,6 +78,7 @@ func CorsSettings(r *gin.Engine) {
 func StartMainServer(r *gin.Engine) {
     r.GET("/", top)
     r.POST("/signup", signup)
+    r.POST("/signin", signin)
 
 	r.Run(":8000")
 }
