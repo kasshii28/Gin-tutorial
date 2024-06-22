@@ -7,9 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { PostForm } from "@/app/features/functions"
 import { useRouter } from "next/navigation"
 import { z } from "zod"
+import * as Url from "@/app/features/constants";
+import LinkComponent from "@/app/features/components/elements/link/Link"
 import { Button } from "@/app/features/components/elements"
-import { UrlArray } from "@/app/features/constants/Url"
-import { UrlMsgArray } from "@/app/features/constants/Urlmsg"
 
 const signUpSchema = z
     .object({
@@ -66,16 +66,9 @@ export default function SignUpPage() {
                 {errors.password && (<span className="text-sm text-red-600">{errors.password.message}</span>)}
 
                 <div className="flex justify-end">
-                    <button type="submit" className="rounded bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-700">
-                        新規登録
-                    </button>
+                    <Button type="submit">新規登録</Button>
                 </div>
-                <div className="mt-4">
-                    <span className="text-sm text-gray-600">
-                        既にアカウントをお持ちですか？
-                    </span>
-                    <Button url={UrlArray[1]} msg={UrlMsgArray[1]}/>
-                </div>
+                <LinkComponent href={Url.UrlArray[3]}>{Url.UrlMsgArray[1]}</LinkComponent>
             </form>
         </div>
     )
